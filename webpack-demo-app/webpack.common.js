@@ -16,6 +16,21 @@ module.exports = {
                 // css-loader takes the css and makes into js
                 // style-loader takes the js and injects into the dom
                 use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.html$/,
+                // do the require of the image in js
+                use: ["html-loader"]
+            },
+            {
+                test: /\.(svg|png|jpg|gif)$/,
+                use: {
+                  loader: "file-loader",
+                  options: {
+                    name: "[name].[hash].[ext]",
+                    outputPath: "imgs"
+                  }
+                }
             }
         ]
     }
